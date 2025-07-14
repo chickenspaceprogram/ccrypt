@@ -61,7 +61,7 @@ static inline bool nt_success(NTSTATUS ntstatus) {
 static int bcrypt_wrapper(uint8_t *dest, size_t nbytes, void *ctx)
 {
 	NTSTATUS result = BCryptGenRandom(NULL, dest, nbytes, BCRYPT_USE_SYSTEM_PREFERRED_RNG);
-	if (result != STATUS_SUCCESS)
+	if (!nt_success(result))
 		return -1;
 	return 0;
 }

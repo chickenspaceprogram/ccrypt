@@ -75,8 +75,6 @@ if (CCRYPT_TESTS)
 endif()
 endfunction()
 
-# will set GMP_FOUND if GMP is found
-# makes the target GMP::GMP available
-find_package(GMP REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 add_subdirectory(src)

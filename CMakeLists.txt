@@ -7,6 +7,8 @@
 cmake_minimum_required(VERSION 3.21)
 project(CUtils C)
 
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+
 # this file does kinda suck but it also does work and i can't be bothered to make it decent
 
 option(CCRYPT_USE_ASAN "Links ccrypt and any of its tests with the ASAN library.")
@@ -72,5 +74,9 @@ if (CCRYPT_TESTS)
 	)
 endif()
 endfunction()
+
+# will set GMP_FOUND if GMP is found
+# makes the target GMP::GMP available
+find_package(GMP REQUIRED)
 
 add_subdirectory(src)

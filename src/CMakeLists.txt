@@ -20,7 +20,7 @@ if (HAVE_ARC4RANDOM)
 	target_compile_definitions(ccrypt_rng PUBLIC CCRYPT_HAVE_ARC4RANDOM)
 endif()
 
-check_symbol_exists("BCryptGenRandom" "bcrypt.h" HAVE_BCRYPT)
+check_symbol_exists("BCryptGenRandom" "Bcrypt.h" HAVE_BCRYPT)
 if (HAVE_BCRYPTGENRANDOM)
 	target_compile_definitions(ccrypt_rng PUBLIC CCRYPT_HAVE_BCRYPT)
 endif()

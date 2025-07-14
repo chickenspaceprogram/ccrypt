@@ -45,7 +45,7 @@ struct ccrypt_prng ccrypt_prng_arc4random(void) {
 
 #ifdef CCRYPT_HAVE_BCRYPT
 // returns a ccrypt_prng that uses the BCryptGenRandom generator
-#include <bcrypt.h>
+#include <Bcrypt.h>
 
 static int bcrypt_wrapper(uint8_t *dest, size_t nbytes, void *ctx)
 {

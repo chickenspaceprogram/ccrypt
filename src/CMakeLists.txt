@@ -24,6 +24,10 @@ if (WIN32)
 	set(HAVE_BCRYPT ON) # this is 100% a hack
 	message(NOTICE "Found BCrypt!")
 	target_compile_definitions(ccrypt_rng PUBLIC CCRYPT_HAVE_BCRYPT)
-endif()
 
+	# the CI/CD passes without this, but on my windows test VM this is 
+	# necessary to avoid linker errors
+
+	target_link_libraries(ccrypt_rng PRIVATE bcrypt)
+endif()
 

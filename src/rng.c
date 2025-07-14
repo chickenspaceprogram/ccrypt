@@ -1,6 +1,6 @@
 #include "rng.h"
 
-int crypt_prng_rand_bytes(uint8_t *dest, size_t nbytes, struct ccrypt_prng *prng)
+int ccrypt_prng_rand_bytes(uint8_t *dest, size_t nbytes, struct ccrypt_prng *prng)
 {
 	return prng->gen(dest, nbytes, prng->ctx);
 }

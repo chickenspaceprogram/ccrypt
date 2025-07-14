@@ -45,7 +45,18 @@ struct ccrypt_prng ccrypt_prng_arc4random(void) {
 
 #ifdef CCRYPT_HAVE_BCRYPT
 // returns a ccrypt_prng that uses the BCryptGenRandom generator
-#include <Bcrypt.h>
+#include <WiNdOwS.h>
+#include <stdbool.h>
+
+// this is a hack, because including Ntdef.h (as Win32 docs say to do)
+// results in a bunch of structs and such being included twice
+//
+// we also need Windows.h here for BCryptGenRandom, there's no avoiding it
+//
+// (Ntdef.h provides an NT_SUCCESS macro which does the same thing as nt_success here)
+static inline bool nt_success(NTSTATUS ntstatus) {
+	return ntstatus <= 0x7FFFFFFF;
+}
 
 static int bcrypt_wrapper(uint8_t *dest, size_t nbytes, void *ctx)
 {

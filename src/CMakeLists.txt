@@ -20,8 +20,9 @@ if (HAVE_ARC4RANDOM)
 	target_compile_definitions(ccrypt_rng PUBLIC CCRYPT_HAVE_ARC4RANDOM)
 endif()
 
-check_symbol_exists("BCryptGenRandom" "Bcrypt.h;Windows.h" HAVE_BCRYPT)
-if (HAVE_BCRYPTGENRANDOM)
+if (WIN32)
+	set(HAVE_BCRYPT ON) # this is 100% a hack
+	message(NOTICE "Found BCrypt!")
 	target_compile_definitions(ccrypt_rng PUBLIC CCRYPT_HAVE_BCRYPT)
 endif()
 
